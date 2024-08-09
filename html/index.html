@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Docker with Menu</title>
+    <style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #002db3;
+    color: white;
+    text-align: center;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background: rgba(0, 0, 0, 0.5); /* Shaffof fon */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    margin: 10px 0;
+    padding: 10px 20px;
+    display: block;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+    margin-left: 10px;
+}
+
+.container {
+    margin-left: 250px; /* Chapdagi menyu kengligi */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: calc(100% - 250px); /* Menyudan o'ngda bo'sh joy */
+    transition: opacity 0.3s ease; /* O'zgarishlar uchun animatsiya */
+}
+
+.container img {
+    width: 200px; /* Rasmning yangi o'lchami */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.container h1 {
+    font-size: 96px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+.details {
+    display: flex;
+    flex-direction: column; /* Qatorlarni vertikal joylashtirish */
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-row img {
+    width: 48px; /* Rasmning o'lchami */
+    height: 48px;
+}
+
+.contact-row h2, .contact-row a {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.contact-row a {
+    color: white;
+    text-decoration: none;
+}
+
+.contact-row a:hover {
+    text-decoration: underline;
+}
+
+.home, .details {
+    display: none; /* Har ikkala bo'limni yashiring */
+}
+
+.home.active, .details.active {
+    display: flex; /* Tanlangan bo'limni ko'rsatish */
+    flex-direction: column;
+    align-items: center;
+}
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="#" onclick="showContent('home')">Bosh menyu</a>
+        <a href="#" onclick="showContent('contact')">Kontaktlar</a>
+        <a href="#">Xizmatlar</a>
+        <a href="#">Monitoring</a>
+    </div>
+    <div class="container" id="content">
+        <div id="home" class="home active">
+            <img src="docker.png" alt="Docker Logo">
+            <h1>Hello Docker</h1>
+        </div>
+        <div id="contact" class="details">
+            <div class="contact-row">
+                <img src="youtube.png" alt="YouTube">
+                <a href="https://youtube.com/myYoutubeChannalName" target="_blank">Uzbek_DevOPS</a>
+            </div>
+            <div class="contact-row">
+                <img src="telegramm.png" alt="Telegram">
+                <a href="https://t.me/+oBfGukYMMKU3NzIy" target="_blank">@Telegramm_Community</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showContent(section) {
+            // Har ikkala bo'limni yashiring
+            document.querySelectorAll('.home, .details').forEach(el => el.classList.remove('active'));
+
+            // Tanlangan bo'limni ko'rsating
+            document.getElementById(section).classList.add('active');
+        }
+    </script>
+</body>
+</html>
